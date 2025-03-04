@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <h1 class="pacifico mt-5 d-inline">Bookmarker</h1>
+        </div>
+        <div class="inputs mt-5 px-4 d-flex flex-column align-items-center shadow p-3 mb-5 bg-body-tertiary rounded">
+            <div class="heading mb-5">
+                <h2 class="righteous text-center mt-2"><i
+                        class="fa-solid fa-bookmark mx-1 text-danger fs-5"></i>Bookmark <span class="pacifico-span">
+                        your favorite</span>
+                    sites<i class="fa-solid fa-bookmark mx-1 text-danger fs-5"></i></h2>
+            </div>
+
+            <label for="markName" class="pt-sans-caption fw-bold ms-2 mb-2 m-auto">Site Name</label>
+            <div class="input-group flex-nowrap ">
+                <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-book-bookmark"></i></span>
+                <input oninput="bookmarkValidation()" id="markName" type="text" class="form-control" placeholder="Bookmark Name" aria-label="Username"
+                    aria-describedby="addon-wrapping">
+            </div>
+            <label for="url" class="form-label pt-sans-caption fw-bold ms-2 mb-2 mt-5 m-auto">Site URL</label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="fa-solid fa-link"></i></span>
+                <input oninput="urlValidation()" type="text" class="form-control" id="url" aria-describedby="basic-addon3 basic-addon4"
+                    placeholder="Website URL">
+            </div>
+            <button onclick="addBookmark()" class="btn btn-danger my-4 px-5">Submit</button>
+        </div>
+        <div class="m-table">
+            <table class="table mt-4 text-center bg-light pt-sans-caption fw-bold">
+                <thead>
+                    <tr>
+                        <th class="text-capitalize">index</th>
+                        <th class="text-capitalize">Website Name</th>
+                        <th class="text-capitalize">Visit</th>
+                        <th class="text-capitalize">Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="t-content" id="display">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="box-info position-absolute start-0 top-0 w-100 h-100 d-flex justify-content-center align-items-center d-none" id="validationRules">
+        <div class="box-conent bg-white p-4 rounded-2 shadow-lg">
+          <header class="box-header w-100 d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex">
+                <i class="fa-solid fa-triangle-exclamation fs-2 text-danger"></i>
+            </div>
+            <button class="btn border-0" id="closeBtn" onclick="closeAlert()">
+              <i class="fa-solid fa-xmark close fs-2"></i>
+            </button>
+          </header>
+          <p class="m-0 pb-2 pt-sans-caption fw-bold fs-5">
+            Site Name or Url is not valid, Please follow the rules below :
+          </p>
+          <ol class="rules list-unstyled m-0 pt-sans-caption text-danger fw-semibold">
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>Site name must
+              contain at least 3 characters
+            </li>
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>Site name musn't duplicated
+            </li>
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>Site URL must be a
+              valid one
+            </li>
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>Site URL must be : https://www.example.com
+            </li>
+          </ol>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+::selection {
+  color: black;
+  background: pink;
+}
+.pacifico {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  color: #352e28;
+}
+.pacifico-span {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color: #dc3545;
+}
+
+.righteous {
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  color: #352e28;
+}
+.pt-sans-caption {
+  font-family: "PT Sans Caption", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+}
+.inputs {
+  background-color: rgba(0, 0, 255, 0.01) !important;
+}
+h1{
+    position: relative;
+}
+h1::before {
+  content: "";
+  position:absolute;
+  width: 100%;
+  height: 30%;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  background-color:rgba(255, 0, 0, 0.468);
+  transition: height 350ms;
+  z-index: -1;
+}
+h1:hover::before {
+  height: 60%;
+}
+.box-info {
+  background-color: #0007;
+}
+.box-content {
+  width: 500px;
+  z-index: 10;
+}
