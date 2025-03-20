@@ -53,6 +53,7 @@ h1:hover::before {
 }
 .box-info {
   background-color: #0007;
+  z-index: 10;
 }
 .box-content {
   width: 500px;
